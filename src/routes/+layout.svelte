@@ -1,5 +1,6 @@
 <script lang="ts">
-	import favicon from '$lib/assets/myface.jpg';
+	// Rounded tab icon, derived from myface.jpg.
+	import favicon from '$lib/assets/favicon.png';
 
 	// Theme variables (--spe-*) and base element rules. These are aliased to the
 	// package's real files in vite.config.ts; see the comment there for why a
@@ -11,8 +12,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
-	<link rel="apple-touch-icon" href={favicon} />
+	<link rel="icon" type="image/png" sizes="256x256" href={favicon} />
 	<meta name="theme-color" content="#121212" />
 </svelte:head>
 

@@ -12,8 +12,14 @@
 	import mailIcon from '$lib/assets/mail.svg?url';
 	import telegramIcon from '$lib/assets/telegram.svg?url';
 	import discordIcon from '$lib/assets/discord.svg?url';
+	import blueskyIcon from '$lib/assets/bluesky.svg?url';
 
 	const socials = [
+		{
+			label: 'Bluesky',
+			href: 'https://bsky.app/profile/ivaansridev.bsky.social',
+			icon: blueskyIcon
+		},
 		{ label: 'GitHub', href: 'https://github.com/ivaansridev', icon: githubIcon },
 		{ label: 'Email', href: 'mailto:ivaansridev.mail+dev@gmail.com', icon: mailIcon },
 		{ label: 'Telegram', href: 'https://t.me/ivaansridev', icon: telegramIcon },
