@@ -1,0 +1,38 @@
+[
+	{
+		"imagepath": "/assets/simplyengineered.png",
+		"name": "SimplyEngineered",
+		"description": "A Svelte 5 component library",
+		"link": "https://simplyengineered.vercel.app",
+		"source": "https://github.com/ivaansridev/simplyengineered"
+	},
+	{
+		"imagepath": "/assets/aimstrike.png",
+		"name": "AimStrike",
+		"description": "First person FPS shooter game",
+		"link": "https://aimstrike.vercel.app"
+	},
+	{
+	  "imagepath": "/assets/stacknodes.png",
+		"name": "StackNodes",
+		"description": "Minimal infinite depth notes outliner",
+		"link": "https://stacknodes.vercel.app",
+		"source": "https://github.com/ivaansridev/stacknodes"
+	},
+	{
+		"name": "Menu++",
+		"description": "Simple rofi/wofi/fuzzel menu list maker for linux",
+		"source": "https://github.com/ivaansridev/menupp"
+	},
+	{
+		"name": "Casklang",
+		"description": "A programming language made in Rust and LLVM",
+		"link": "https://casklang.vercel.app",
+		"source": "https://github.com/casklang/casklang"
+	},
+	{
+		"name": "Nav++",
+		"description": "Simple file-fuzzy-search (fzf) navigator for linux",
+		"source": "https://github.com/ivaansridev/navpp"
+	}
+]
