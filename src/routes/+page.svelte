@@ -1,6 +1,7 @@
 <!-- src/routes/+page.svelte -->
 <script lang="ts">
     import * as spe from 'simplyengineered';
+    import * as vn from 'velne-lib';
     import projectData from '$lib/data.json';
     import myface from '$lib/assets/myface.jpg';
     /* `?url` is required, not stylistic: these SVGs contain raw parentheses and
@@ -85,8 +86,8 @@
     />
 </svelte:head>
 
-<spe.Navbar blur>
-    <spe.A href="#home" variant="link">Ivaan Srivastava</spe.A>
+<vn.Navbar blur style="--vn-navbar-height: 60px">
+    <vn.A href="#home" variant="link">Ivaan Srivastava</vn.A>
 
     {#snippet right()}
         <spe.Pilltab>
@@ -97,7 +98,7 @@
             {/each}
         </spe.Pilltab>
     {/snippet}
-</spe.Navbar>
+</vn.Navbar>
 
 <svelte:window onscroll={syncActiveSection} onresize={syncActiveSection} />
 
@@ -113,20 +114,20 @@
             </p>
 
             <div class="cta-row">
-                <spe.A href="#projects" variant="btn-solid">View Projects</spe.A>
-                <spe.A href="#contact" variant="btn-outlined">Contact Me</spe.A>
+                <vn.A href="#projects" variant="btn-solid">View Projects</vn.A>
+                <vn.A href="#contact" variant="btn-outlined">Contact Me</vn.A>
             </div>
 
             <div class="social-links">
                 {#each socials as { label, href, icon } (label)}
-                    <spe.A {href} variant="link" target="_blank" aria-label={label}>
+                    <vn.A {href} variant="link" target="_blank" aria-label={label}>
                         <span
                             class="social-icon"
                             style:--icon-url={`url(${icon})`}
                             aria-hidden="true"
                         ></span>
                         {label}
-                    </spe.A>
+                    </vn.A>
                 {/each}
             </div>
         </div>
@@ -163,24 +164,24 @@
                     {#if project.link || project.source}
                         <div class="project-links">
                             {#if project.link}
-                                <spe.A
+                                <vn.A
                                     href={project.link}
                                     variant="btn-solid"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
                                     View
-                                </spe.A>
+                                </vn.A>
                             {/if}
                             {#if project.source}
-                                <spe.A
+                                <vn.A
                                     href={project.source}
                                     variant="btn-tonal"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
                                     Source
-                                </spe.A>
+                                </vn.A>
                             {/if}
                         </div>
                     {/if}
@@ -191,14 +192,14 @@
         </div>
 
         <div class="more-row">
-            <spe.A
+            <vn.A
                 href="https://github.com/ivaansridev?tab=repositories"
                 variant="btn-outlined"
                 target="_blank"
                 aria-label="More projects on GitHub"
             >
                 More projects on GitHub
-            </spe.A>
+            </vn.A>
         </div>
     </section>
 
@@ -226,20 +227,19 @@
     <div class="footer-grid">
         <div class="footer-social">
             {#each socials as { label, href, icon } (label)}
-                <spe.A {href} variant="link" target="_blank" aria-label={label}>
+                <vn.A {href} variant="link" target="_blank" aria-label={label}>
                     <span class="social-icon" style:--icon-url={`url(${icon})`} aria-hidden="true"
                     ></span>
                     {label}
-                </spe.A>
+                </vn.A>
             {/each}
         </div>
 
         <div class="footer-tech">
             <div class="tech-item"><span>Built with</span><span>Svelte</span></div>
             <div class="tech-item">
-                <span>Styled with</span><spe.A
-                    href="https://simplyengineered.vercel.app"
-                    variant="link">simplyengineered</spe.A
+                <span>Made with</span><vn.A href="https://velne.vercel.app" variant="link"
+                    >velne</vn.A
                 >
             </div>
             <div class="tech-item"><span>Deployed on</span><span>Vercel</span></div>
@@ -248,8 +248,8 @@
 
     <div class="footer-copyright">
         <p>
-            Copyright © 2026 <spe.A href="https://github.com/ivaansridev" variant="link"
-                >Ivaan Srivastava</spe.A
+            Copyright © 2026 <vn.A href="https://github.com/ivaansridev" variant="link"
+                >Ivaan Srivastava</vn.A
             >. All rights reserved.
         </p>
     </div>
@@ -308,7 +308,7 @@
         flex-wrap: wrap;
     }
 
-    /* spe.A renders a plain <a> (spe-hl), so lay the icon + label out here. */
+    /* vn.A renders a plain <a> (vn-hl), so lay the icon + label out here. */
     .social-links :global(a),
     .footer-social :global(a) {
         display: inline-flex;

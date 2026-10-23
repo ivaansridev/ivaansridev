@@ -8,6 +8,8 @@
     import 'simplyengineered/colors.css';
     import 'simplyengineered/main.css';
 
+    import 'velne-lib/tokens.css';
+
     let { children } = $props();
 </script>
 
