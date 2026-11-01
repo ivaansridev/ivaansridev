@@ -3,6 +3,7 @@
         "imagepath": "/assets/velne.png",
         "name": "Velne",
         "description": "A Svelte 5 component library",
+        "language": ["svelte", "typescript"],
         "link": "https://velne.vercel.app",
         "source": "https://github.com/ivaansridev/velne"
     },
@@ -10,6 +11,7 @@
         "imagepath": "/assets/leaperstuff.png",
         "name": "leaperStuff",
         "description": "Suite of tools.",
+        "language": ["html", "css", "javascript"],
         "link": "https://leaperstuff.vercel.app",
         "source": "https://github.com/ivaansridev/leaperstuff"
     },
@@ -17,12 +19,14 @@
         "imagepath": "/assets/aimstrike.png",
         "name": "AimStrike",
         "description": "First person FPS shooter game",
+        "language": ["html", "css", "javascript"],
         "link": "https://aimstrike.vercel.app"
     },
     {
         "imagepath": "/assets/stacknodes.png",
         "name": "StackNodes",
         "description": "Minimal infinite depth notes outliner",
+        "language": ["svelte", "typescript"],
         "link": "https://stacknodes.vercel.app",
         "source": "https://github.com/ivaansridev/stacknodes"
     },
@@ -30,11 +34,13 @@
         "imagepath": "/assets/trandex.png",
         "name": "trandex",
         "description": "A fast floating wayland launcher",
+        "language": "rust",
         "source": "https://github.com/ivaansridev/trandex"
     },
     {
         "name": "Casklang",
         "description": "A programming language made in Rust and LLVM",
+        "language": "rust",
         "link": "https://casklang.vercel.app",
         "source": "https://github.com/casklang/casklang"
     }

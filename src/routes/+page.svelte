@@ -2,6 +2,7 @@
 <script lang="ts">
     import * as spe from 'simplyengineered';
     import * as vn from 'velne-lib';
+    import { siKotlin, siJavascript, siTypescript, siHtml5, siCss, siSvelte, siRust } from 'simple-icons';
     import projectData from '$lib/data.json';
     import myface from '$lib/assets/myface.jpg';
     /* `?url` is required, not stylistic: these SVGs contain raw parentheses and
@@ -28,14 +29,46 @@
     ] as const;
 
     /** Shape of each entry in `$lib/data.json`.
-     *  Only `name` is required; every other field may be omitted. */
+     *  Only `name` is required; every other field may be omitted.
+     *  `language` takes a single string or an array of strings. */
     type Project = {
         imagepath?: string;
         name: string;
         description?: string;
+        language?: string | string[];
         link?: string;
         source?: string;
     };
+
+    type Language = { label: string; color: string; path: string | null };
+
+    /** Known languages get their brand label, color, and logo path from Simple Icons. */
+    const languages: Record<string, Language> = {
+        kotlin: { label: 'Kotlin', color: `#${siKotlin.hex}`, path: siKotlin.path },
+        javascript: { label: 'JavaScript', color: `#${siJavascript.hex}`, path: siJavascript.path },
+        typescript: { label: 'TypeScript', color: `#${siTypescript.hex}`, path: siTypescript.path },
+        html: { label: 'HTML', color: `#${siHtml5.hex}`, path: siHtml5.path },
+        css: { label: 'CSS', color: `#${siCss.hex}`, path: siCss.path },
+        svelte: { label: 'Svelte', color: `#${siSvelte.hex}`, path: siSvelte.path },
+        rust: { label: 'Rust', color: `#DEA584`, path: siRust.path }
+    };
+
+    /** Accepts a string or an array and returns one display entry per language.
+     *  Unknown languages get the first letter capitalized and a neutral gray. */
+    function languageList(value: string | string[] | undefined): Language[] {
+        if (!value) return [];
+        const items = Array.isArray(value) ? value : [value];
+        return items.map((raw) => {
+            const key = raw.trim().toLowerCase();
+            if (key in languages) return languages[key];
+            const trimmed = raw.trim();
+            return {
+                label: trimmed.charAt(0).toUpperCase() + trimmed.slice(1),
+                color: '#8A8A8A',
+                icon: ''
+            };
+        });
+    }
 
     const projects = projectData as Project[];
 
@@ -77,7 +110,6 @@
         active = current;
     }
 </script>
-
 <svelte:head>
     <title>Ivaan Srivastava | Frontend Developer</title>
     <meta
@@ -153,6 +185,21 @@
                             alt={project.name}
                             loading="lazy"
                         />
+                    {/if}
+
+                    {#if project.language}
+                        <div class="lang-row">
+                            {#each languageList(project.language) as lang (lang.label)}
+                                <span class="lang-pill" style:--lang-color={lang.color}>
+                                    {#if lang.path}
+                                        <svg class="lang-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d={lang.path} fill="currentColor" />
+                                        </svg>
+                                    {/if}
+                                    {lang.label}
+                                </span>
+                            {/each}
+                        </div>
                     {/if}
 
                     <h3>{project.name}</h3>
@@ -524,5 +571,39 @@
         text-align: center;
         font-size: 13px;
         color: color-mix(in srgb, var(--spe-font-color) 50%, transparent);
+    }
+
+    :global(.lang-row) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 8px;
+    }
+
+    :global(.lang-pill) {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 2px 10px 2px 6px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.6;
+        color: var(--lang-color);
+        background: color-mix(in srgb, var(--lang-color) 15%, transparent);
+        border: 1px solid color-mix(in srgb, var(--lang-color) 35%, transparent);
+    }
+
+    :global(.lang-icon) {
+        width: 12px;
+        height: 12px;
+        flex-shrink: 0;
+        fill: currentColor;
+    }
+
+    :global(.lang-icon svg) {
+        width: 100%;
+        height: 100%;
+        display: block;
     }
 </style>
