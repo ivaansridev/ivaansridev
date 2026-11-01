@@ -5,7 +5,6 @@
     "": {
       "name": "ivaansridev",
       "dependencies": {
-        "simplyengineered": "^0.2.0",
         "velne-lib": "^0.2.0",
       },
       "devDependencies": {
@@ -358,8 +357,6 @@
     "shebang-command": ["shebang-command@2.0.0", "", { "dependencies": { "shebang-regex": "3.0.0" } }, "sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA=="],
 
     "shebang-regex": ["shebang-regex@3.0.0", "", {}, "sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A=="],
-
-    "simplyengineered": ["simplyengineered@0.2.0", "", { "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-GUxk4zTlwAxFJxQ3Bsrpde1uxWuI2BJLA+e0kIaYmUJJcLESNZqd/lKp+0LRX9rUxopcGxOVRUzOeJq9AMOFZA=="],
 
     "sirv": ["sirv@3.0.2", "", { "dependencies": { "@polka/url": "1.0.0-next.29", "mrmime": "2.0.1", "totalist": "3.0.1" } }, "sha512-2wcC/oGxHis/BoHkkPwldgiPSYcpZK3JU28WoMVv55yHJgcZ8rlXvuG9iZggz+sU1d4bRgIGASwyWqjxu3FM0g=="],
 

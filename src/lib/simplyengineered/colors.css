@@ -1,0 +1,18 @@
+:root {
+    --spe-color-blue: #3b82f6;
+    --spe-color-red: #ef4444;
+    --spe-color-magenta: #d946ef;
+    --spe-color-yellow: #eab308;
+    --spe-color-green: #22c55e;
+    --spe-mode: black;
+    --spe-font-color: white;
+    --spe-accent-font-color: white;
+    --spe-bg: #121212;
+    --spe-bg-tint: #1e1e1e;
+    --spe-accent: var(--spe-color-yellow);
+    --spe-radius-low: 6px;
+    --spe-radius-med: 12px;
+    --spe-radius-high: 24px;
+    --spe-hover-bg: color-mix(in srgb, var(--spe-accent) 10%, transparent);
+    --spe-dur: 120ms;
+}

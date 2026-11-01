@@ -1,8 +1,16 @@
 <!-- src/routes/+page.svelte -->
 <script lang="ts">
-    import * as spe from 'simplyengineered';
+    import * as spe from '$lib/simplyengineered';
     import * as vn from 'velne-lib';
-    import { siKotlin, siJavascript, siTypescript, siHtml5, siCss, siSvelte, siRust } from 'simple-icons';
+    import {
+        siKotlin,
+        siJavascript,
+        siTypescript,
+        siHtml5,
+        siCss,
+        siSvelte,
+        siRust
+    } from 'simple-icons';
     import projectData from '$lib/data.json';
     import myface from '$lib/assets/myface.jpg';
     /* `?url` is required, not stylistic: these SVGs contain raw parentheses and
@@ -65,7 +73,7 @@
             return {
                 label: trimmed.charAt(0).toUpperCase() + trimmed.slice(1),
                 color: '#8A8A8A',
-                icon: ''
+                path: null
             };
         });
     }
@@ -110,6 +118,7 @@
         active = current;
     }
 </script>
+
 <svelte:head>
     <title>Ivaan Srivastava | Frontend Developer</title>
     <meta
@@ -192,7 +201,11 @@
                             {#each languageList(project.language) as lang (lang.label)}
                                 <span class="lang-pill" style:--lang-color={lang.color}>
                                     {#if lang.path}
-                                        <svg class="lang-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                        <svg
+                                            class="lang-icon"
+                                            viewBox="0 0 24 24"
+                                            aria-hidden="true"
+                                        >
                                             <path d={lang.path} fill="currentColor" />
                                         </svg>
                                     {/if}
