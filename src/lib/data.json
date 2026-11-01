@@ -1,10 +1,17 @@
 [
     {
-        "imagepath": "/assets/simplyengineered.png",
-        "name": "SimplyEngineered",
+        "imagepath": "/assets/velne.png",
+        "name": "Velne",
         "description": "A Svelte 5 component library",
-        "link": "https://simplyengineered.vercel.app",
-        "source": "https://github.com/ivaansridev/simplyengineered"
+        "link": "https://velne.vercel.app",
+        "source": "https://github.com/ivaansridev/velne"
+    },
+    {
+        "imagepath": "/assets/leaperstuff.png",
+        "name": "leaperStuff",
+        "description": "Suite of tools.",
+        "link": "https://leaperstuff.vercel.app",
+        "source": "https://github.com/ivaansridev/leaperstuff"
     },
     {
         "imagepath": "/assets/aimstrike.png",
@@ -18,6 +25,12 @@
         "description": "Minimal infinite depth notes outliner",
         "link": "https://stacknodes.vercel.app",
         "source": "https://github.com/ivaansridev/stacknodes"
+    },
+    {
+        "imagepath": "/assets/trandex.png",
+        "name": "trandex",
+        "description": "A fast floating wayland launcher",
+        "source": "https://github.com/ivaansridev/trandex"
     },
     {
         "name": "Casklang",
