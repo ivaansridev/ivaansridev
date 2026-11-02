@@ -20,7 +20,8 @@
         "name": "AimStrike",
         "description": "First person FPS shooter game",
         "language": ["html", "css", "javascript"],
-        "link": "https://aimstrike.vercel.app"
+        "link": "https://aimstrike.vercel.app",
+        "license": "All Rights Reserved"
     },
     {
         "imagepath": "/assets/stacknodes.png",

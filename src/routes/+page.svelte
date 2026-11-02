@@ -44,6 +44,7 @@
         name: string;
         description?: string;
         language?: string | string[];
+        license?: string;
         link?: string;
         source?: string;
     };
@@ -196,7 +197,7 @@
                         />
                     {/if}
 
-                    {#if project.language}
+                    {#if project.language || project.license}
                         <div class="lang-row">
                             {#each languageList(project.language) as lang (lang.label)}
                                 <span class="lang-pill" style:--lang-color={lang.color}>
@@ -212,6 +213,14 @@
                                     {lang.label}
                                 </span>
                             {/each}
+                            {#if project.license}
+                                <span class="license-group">
+                                    {#if project.language}
+                                        <span class="lang-separator" aria-hidden="true">●</span>
+                                    {/if}
+                                    <span class="license-text">{project.license}</span>
+                                </span>
+                            {/if}
                         </div>
                     {/if}
 
@@ -589,6 +598,7 @@
     :global(.lang-row) {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         gap: 6px;
         margin-bottom: 8px;
     }
@@ -618,5 +628,26 @@
         width: 100%;
         height: 100%;
         display: block;
+    }
+
+    :global(.license-group) {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+    }
+
+    :global(.lang-separator) {
+        font-size: 16px;
+        line-height: 1.6;
+        transform: translateY(-2px);
+        color: color-mix(in srgb, var(--spe-font-color) 60%, transparent);
+    }
+
+    :global(.license-text) {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.6;
+        color: color-mix(in srgb, var(--spe-font-color) 75%, transparent);
     }
 </style>
