@@ -11,6 +11,7 @@
         siSvelte,
         siRust
     } from 'simple-icons';
+    import { scale, fade } from 'svelte/transition';
     import projectData from '$lib/data.json';
     import myface from '$lib/assets/myface.jpg';
     /* `?url` is required, not stylistic: these SVGs contain raw parentheses and
@@ -90,6 +91,25 @@
     type SectionId = (typeof sections)[number]['id'];
 
     let active: SectionId = $state('home');
+
+    let fullscreenImage: string | null = $state(null);
+
+    function openImage(src: string) {
+        fullscreenImage = src;
+    }
+
+    function closeImage() {
+        fullscreenImage = null;
+    }
+
+    function downloadImage(src: string) {
+        const link = document.createElement('a');
+        link.href = src;
+        link.download = src.split('/').pop() || 'image';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+    }
 
     function isActive(id: SectionId) {
         return active === id;
@@ -189,12 +209,18 @@
             {#each projects as project (project.name)}
                 <spe.Card class="project-card">
                     {#if project.imagepath}
-                        <img
-                            class="project-image"
-                            src={project.imagepath}
-                            alt={project.name}
-                            loading="lazy"
-                        />
+                        <vn.Button
+                            class="project-image-button"
+                            onclick={() => openImage(project.imagepath!)}
+                            aria-label="View {project.name} image fullscreen"
+                        >
+                            <img
+                                class="project-image"
+                                src={project.imagepath}
+                                alt={project.name}
+                                loading="lazy"
+                            />
+                        </vn.Button>
                     {/if}
 
                     {#if project.language || project.license}
@@ -291,6 +317,48 @@
         </div>
     </section>
 </main>
+
+{#if fullscreenImage}
+    <div
+        class="image-overlay"
+        role="dialog"
+        aria-modal="true"
+        tabindex="-1"
+        onclick={closeImage}
+        onkeydown={(e) => e.key === 'Escape' && closeImage()}
+        transition:fade={{ duration: 150 }}
+    >
+        <vn.Button
+            class="image-close"
+            onclick={(e) => {
+                e.stopPropagation();
+                closeImage();
+            }}
+            aria-label="Close image"
+        >
+            ×
+        </vn.Button>
+        <div
+            class="fullscreen-image-wrap"
+            role="button"
+            tabindex="-1"
+            onclick={(e) => e.stopPropagation()}
+            onkeydown={(e) => e.stopPropagation()}
+            transition:scale={{ duration: 200, start: 0.9 }}
+        >
+            <img class="fullscreen-image" src={fullscreenImage} alt="Fullscreen preview" />
+        </div>
+        <vn.Button
+            class="image-download"
+            onclick={(e) => {
+                e.stopPropagation();
+                if (fullscreenImage) downloadImage(fullscreenImage);
+            }}
+        >
+            Download
+        </vn.Button>
+    </div>
+{/if}
 
 <footer class="site-footer">
     <div class="footer-grid">
@@ -453,21 +521,20 @@
 	   container width, and it can't express "never 2 columns on a wide screen"
 	   — at1200px it would happily fit 4. Breakpoints: 1 phone, 2 tablet, 3 desktop. */
     .projects-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 8px;
+        columns: 1;
+        column-gap: 8px;
         margin-bottom: 32px;
     }
 
     @media (min-width: 640px) {
         .projects-grid {
-            grid-template-columns: repeat(2, 1fr);
+            columns: 2;
         }
     }
 
     @media (min-width: 1024px) {
         .projects-grid {
-            grid-template-columns: repeat(3, 1fr);
+            columns: 3;
         }
     }
 
@@ -488,6 +555,8 @@
     :global(.spe-card.project-card.project-card) {
         display: flex;
         flex-direction: column;
+        break-inside: avoid;
+        margin-bottom: 8px;
     }
 
     :global(.project-card h3) {
@@ -505,9 +574,7 @@
     }
 
     :global(.project-image) {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
+        max-width: 100%;
         border-radius: var(--spe-radius-low);
         margin-bottom: 12px;
     }
@@ -622,6 +689,71 @@
         height: 12px;
         flex-shrink: 0;
         fill: currentColor;
+    }
+
+    :global(.project-image-button) {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: zoom-in !important;
+    }
+
+    :global(.project-image-button:hover) {
+        background: transparent !important;
+        box-shadow: none;
+    }
+
+    :global(.project-image) {
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+
+    :global(.project-image:hover) {
+        opacity: 1;
+        filter: none;
+    }
+
+    :global(.image-overlay) {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: color-mix(in srgb, #000 85%, transparent);
+    }
+
+    :global(.image-close) {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 999px;
+        background: color-mix(in srgb, #fff 15%, transparent);
+        color: #fff;
+        font-size: 28px;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    :global(.fullscreen-image) {
+        max-width: 90vw;
+        border-radius: var(--spe-radius-low);
+    }
+
+    :global(.image-download) {
+        position: absolute;
+        bottom: 16px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        background: color-mix(in srgb, #fff 15%, transparent);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
     }
 
     :global(.lang-icon svg) {
