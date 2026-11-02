@@ -192,6 +192,14 @@
                     </vn.A>
                 {/each}
             </div>
+
+            <img
+                src="https://skillicons.dev/icons?i=rust,python,kotlin,flutter,dart,svelte,html,css,js,typescript,figma,github,linux"
+                alt="My Skills"
+                loading="lazy"
+                decoding="async"
+                style="margin-top: 20px; max-width: 100%; height: auto;"
+            />
         </div>
 
         <div class="hero-visual">
