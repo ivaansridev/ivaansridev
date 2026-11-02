@@ -2,6 +2,8 @@
 
 Frontend Developer | Web Development Enthusiast
 
+[![My Skills](https://skillicons.dev/icons?i=rust,python,kotlin,flutter,dart,svelte,html,css,js,typescript,figma,github,linux)](https://skillicons.dev)
+
 Welcome to my portfolio repository. I build interactive and seamless digital experiences with modern web technologies.
 
 ## Portfolio
