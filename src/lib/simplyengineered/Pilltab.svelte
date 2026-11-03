@@ -14,8 +14,8 @@
         display: inline-flex;
         align-items: center;
         gap: 2px;
-        padding: 4px;
+        padding: 0px;
         background: color-mix(in srgb, var(--spe-mode) 85%, var(--spe-font-color) 15%);
-        border-radius: var(--spe-radius-med);
+        border-radius: var(--spe-radius-low);
     }
 </style>

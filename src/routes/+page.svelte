@@ -148,15 +148,15 @@
     />
 </svelte:head>
 
-<vn.Navbar blur style="--vn-navbar-height: 60px">
+<vn.Navbar blur>
     <vn.A href="#home" variant="link">Ivaan Srivastava</vn.A>
 
     {#snippet right()}
         <spe.Pilltab>
             {#each sections as { id, label } (id)}
-                <spe.PilltabItem href="#{id}" variant={isActive(id) ? 'active' : undefined}>
+                <vn.Button href="#{id}" variant={isActive(id) ? 'solid' : undefined}>
                     {label}
-                </spe.PilltabItem>
+                </vn.Button>
             {/each}
         </spe.Pilltab>
     {/snippet}
@@ -415,6 +415,7 @@
         margin: 0 auto;
         padding: 80px 24px;
         flex-wrap: wrap;
+        min-height: calc(100vh - var(--vn-navbar-height, 40px));
     }
 
     .hero-copy {
