@@ -154,7 +154,10 @@
     {#snippet right()}
         <spe.Pilltab>
             {#each sections as { id, label } (id)}
-                <vn.Button href="#{id}" variant={isActive(id) ? 'solid' : undefined}>
+                <vn.Button
+                    onclick={() => (window.location.hash = id)}
+                    variant={isActive(id) ? 'solid' : undefined}
+                >
                     {label}
                 </vn.Button>
             {/each}
